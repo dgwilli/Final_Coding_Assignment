@@ -1,0 +1,155 @@
+---
+title: "Final Project"
+output: html_document
+date: "2023-04-26"
+---
+
+```{r}
+library(ggplot2) 
+library(tidyverse)
+library(ggmap)
+library(tidygeocoder)
+```
+
+```{r}
+Beaufort_Festival <- read.csv(file = "https://raw.githubusercontent.com/dgwilli/8510-Worksheets/main/Beaufort%20Festival.csv")
+```
+
+>PURPOSE: wanted to see which nations are most responsible for submitting BIPOC-themed movies. 
+
+>FIRST: how much geographical diversity is there in the films that are shown? 
+
+**Figure 1**
+```{r}
+International_Figures <- Beaufort_Festival %>%
+  select(YEAR, FILM, COUNTRY, THEMES) %>%
+  filter(THEMES == "BIPOC") %>%
+  group_by(COUNTRY, THEMES) %>%
+  summarize(COUNT = n())
+
+International_Figures
+```
+> Now I need to modify the dataset in order to do my geocoding.
+
+**Figure 2**
+```{r}
+Beaufort_Geocoding <- Beaufort_Festival %>%
+  select(YEAR, FILM, CITY, STATE, COUNTRY, THEMES) %>%
+  filter(THEMES == "BIPOC" & COUNTRY == "US")
+
+BIFF_US_Coordinates <- Beaufort_Geocoding %>% geocode(city = CITY, state = STATE, method = 'osm', lat = lat, long = long)
+```
+
+
+**Figure 3**
+```{r}
+BeaufortIFF_by_State <- Beaufort_Geocoding %>%
+  filter(STATE != "Null") %>%
+  group_by(STATE) %>%
+  summarize(COUNT = n())
+
+ggplot(BeaufortIFF_by_State, aes(x = STATE, y = COUNT, fill = STATE)) + geom_col() + ggtitle("BIPOC Films Submitted Per State, 2017-2022") + labs(x="States",y="Number of Films") 
+```
+
+>SECOND: how many BIPOC films were submitted by year? 
+
+**Figure 4**
+```{r}
+BeaufordIFF_by_Year <- Beaufort_Geocoding %>%
+  group_by(YEAR) %>%
+  summarize(COUNT = n())
+
+ggplot(BeaufordIFF_by_Year, aes(x=YEAR, y=COUNT)) + geom_line() + ggtitle("Total BIPOC Films Admitted Per Year") + labs(x="Year",y="Number of Films")
+```
+
+>THIRD: what dimensions of BIPOC experiences are these films exploring? 
+ 
+ **Figure 5**
+```{r}
+library(tidytext)
+
+BeaufortIFF_words <- Beaufort_Festival %>%
+  select(YEAR, FILM, THEMES, SYNOPSIS) %>%
+  filter(THEMES == "BIPOC")
+
+BeaufortIFF_words <- BeaufortIFF_words %>% 
+  unnest_tokens(word, SYNOPSIS) %>% 
+  filter(str_detect(word, "[a-z']$")) %>%
+  anti_join(stop_words)
+
+BIFF_dtm <- BeaufortIFF_words %>% 
+  count(YEAR, word) %>% 
+  cast_dtm(YEAR, word, n)
+
+BIFF_lda <- LDA(BIFF_dtm, k = 6, control = list(seed = 12345))
+BIFF_lda
+
+BIFF_topic_list <- tidy(BIFF_lda, matrix = "beta")
+BIFF_topic_list
+
+BIFF_top_terms <- BIFF_topic_list %>%
+  group_by(topic) %>%
+  top_n(3, beta)
+BIFF_top_terms %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+```
+
+>FIFTH: focus on 2020 (topic 1) when the drop happened
+
+**Figure 6**
+```{r}
+BIFF_gamma <- tidy(BIFF_lda, matrix = "gamma") %>% arrange(desc(gamma))
+BIFF_gamma
+```
+
+**Figure 7**
+```{r}
+library(wordcloud)
+
+BIFF_wordcloud <- BIFF_topic_list %>% filter(topic == 4)
+
+wordcloud(BIFF_topic_list$term, max.words = 45, random.order = FALSE,
+    rot.per = 0.3, colors = brewer.pal(4, "Dark2"), scale = c(2, .5))
+```
+
+>SIXTH: which words are most popular in general: distanced versus close viewing. 
+
+**Figure 8**
+```{r}
+BeaufortIFF_words %>% 
+  group_by(word) %>%
+  summarize(COUNT = n()) %>%
+  arrange(desc(COUNT))
+```
+**Figure 9**
+```{r}
+BIFF_Award_Winners <- Beaufort_Festival %>%
+  select(FILM, AWARDS, THEMES) %>%
+  filter(AWARDS != "None") %>%
+  group_by(THEMES) %>%
+  summarize(COUNT = n())
+
+ggplot(BIFF_Award_Winners, aes(x = THEMES, y = COUNT, fill = THEMES)) + geom_col() + ggtitle("Total Awards Won, 2017-2022") + labs(x="Theme",y="Number of Awards") 
+```
+
+
+
+>CONCLUSION: take away and call for further research
+
+---
+**BIBLIOGRAPHY**
+
+Dovey, Lindiwe, and Estrella Sendra. 2023. “Toward Decolonized Film Festival Worlds.” In *Rethinking Film Festivals in the Pandemic Era and After*, 269–89. Springer International Publishing Cham.
+
+Perren, Alisa. 2013. “Rethinking Distribution for the Future of Media Industry Studies.” *Cinema Journal* 52 (3): 165–71. https://doi.org/10.1353/cj.2013.0017.
+
+Redfern, Nick. 2014. “Quantitative Methods and the Study of Film.” *Lecture Delivered at the University of Glasgow* 14.
+
+Vallejo, Aida. 2020. “Rethinking the Canon: The Role of Film Festivals in Shaping Film History.” *Studies in European Cinema* 17 (2): 155–69. https://doi.org/10.1080/17411548.2020.1765631.
+
+Wong, Cindy H. 2011. *Film Festivals: Culture, People, and Power on the Global Screen.* New Brunswick, N.J: Rutgers University Press.
+
