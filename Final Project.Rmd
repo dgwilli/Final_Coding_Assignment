@@ -10,21 +10,23 @@ Film festivals occupy an important position in film historiography. They serve a
 
 Additionally, festivals regularly include Q&A sessions, which invite much-needed conversations and debates after the credits have rolled. Such meaningful dialogue is rarely experienced at the multiplex. Put otherwise, festivals offer a level of critical engagement through film that makes these venues worthwhile topics of discourse. 
 
-Consequently, scholars have begun paying more attention to how these venues function and influence public discourse. One such scholar is Alisa Perren, who notes that “the full range of intermediaries involved in distribution processes, and the types of influence they exercise over content individually or collectively,”^[1] is becoming more integral to understanding how we consume and are influenced by media.
+Consequently, scholars have begun paying more attention to how these venues function and influence public discourse. One such scholar is Alisa Perren (2013), who notes that “the full range of intermediaries involved in distribution processes, and the types of influence they exercise over content individually or collectively,”^[1] is becoming more integral to understanding how we consume and are influenced by media.
 
 Film festivals don’t just happen. Like all other modes of distribution, they are created and curated by *human beings*, all of whom carry their own innate biases and influence which works will have the chance to find an audience and which ones won’t. Therefore, it is necessary that scholars examine festivals as *contextual* events, each one operating from a different set of values and practices. 
 
 **STUDY DETAILS & DATA COLLECTION**
 
-This study attempts to do just that, with South Carolina’s Beaufort International Film Festival (abbreviaed throughout this writing as "BIFF") as its focus. While festivals like Cannes, Berlin, or Sundance are far more revered, Aida Vallejo submits that “under-researched festivals reveal new dynamics of canon formation, bringing about the vindication of film-makers from geo-cultural spaces previously bypassed by official film history.”^[2]
+This study attempts to do just that, with South Carolina’s Beaufort International Film Festival (abbreviated henceforth as "BIFF") as its focus. While festivals like Cannes, Berlin, or Sundance are far more revered, Aida Vallejo (2020) submits that “under-researched festivals reveal new dynamics of canon formation, bringing about the vindication of film-makers from geo-cultural spaces previously bypassed by official film history.”^[2]
 
-More renowned festivals like those listed above do a lot of good, but their prestige also constitutes a hierarchy that neglects many works. Only so many films can be accepted to Cannes each year. Therefore, it’s necessary to also turn a critical eye towards *smaller* festivals, of which there are far more, to gain a more well-rounded understanding of film festivals' influence on film canonization. While a truly comprehensive study of this subject is well beyond the scope of this writing, it is my hope that the information contained herein will spur further research and discussion. 
+More renowned festivals like those listed above do a lot of good, but their prestige also constitutes a hierarchy that neglects many works. Only so many films can be accepted to Cannes each year. Examining only this festival and the few like it would mean excluding diverse and important voices in filmmaking.
+
+Therefore, it’s necessary to also turn a critical eye towards *smaller* festivals, of which there are far more, to gain a more well-rounded understanding of film festivals' influence on film canonization. While a truly comprehensive study of this subject is well beyond the scope of this writing, it is my hope that the information contained herein will spur further research and discussion. 
 
 The collected data comes from the last six years of the Beaufort International Film Festival (2017-2023), South Carolina's largest and long-running showcase for independent filmmakers. Each officially selected film is represented in the dataset. The start date of 2017 was deliberately chosen to coincide with the beginning of the Trump presidency.
 
 The variables used to tidy and examine the data are: year of submission; film title; director; city and state where the film was produced; how the film was categorized (ex: “Documentary” vs. “Feature); whether the film received awards and which ones; whether the film contains certain themes pertinent to this study; and a brief synopsis of the plot. All data was gleaned directly from the Beaufort International Film Festival’s online archive. 
 
-The theme that is the focus of this study is BIPOC (Black, Indigenous, Person of Color) experience. To be considered BIPOC-themed, a film must feature either **A)** a character who identifies as BIPOC and who is primarily responsible for driving the action or **B)** a plot that specifically explores some dimension of BIPOC life. (For example, a film that examines injustices regularly experienced by Black communities would be "BIPOC.") This was determined by evaluating the plot details in the film snyopses, which are how the festival advertises these works to potential audiences.  
+The theme that drives this study is BIPOC (Black, Indigenous, Person of Color) experience. To be considered BIPOC-themed, a film must feature either **A)** a character who identifies as BIPOC and who is primarily responsible for driving the action or **B)** a story that specifically explores some dimension of BIPOC life. (For example, a film that examines injustices regularly experienced by Black communities would be "BIPOC.") This was determined by evaluating the plot details in the film snyopses, which are how the festival advertises these works to potential audiences.  
 
 This theme was chosen because BIPOC experiences are historically under-represented in movies and, therefore, allow for a much more nuanced study than simple genre classifications would.^[3]
 
@@ -43,7 +45,7 @@ Beaufort_Festival <- read.csv(file = "https://raw.githubusercontent.com/dgwilli/
 
 **RATIONALE, METHODS & AND CODING**
 
-Simply including BIPOC films in a festival line-up isn't enough, though, as Sandra Estrella and Lindiwe Dovey remind us that filmmaking is still a largely imperial practice dominated by the white Western gaze.^[4] Put otherwise, it's important to consider not only how many BIPOC films are shown at festivals but what their geographic diversity is, as well. If BIPOC stories are only coming from a handful of locations, it results in a kind of tunnel vision. 
+Simply including BIPOC films in a festival line-up isn't enough, though, as Sandra Estrella and Lindiwe Dovey (2023) remind us that filmmaking is still a largely imperial practice dominated by the white Western gaze.^[4] Put otherwise, it's important to consider not only how many BIPOC films are shown at festivals but what their geographic diversity is, as well. If BIPOC stories are only coming from a handful of locations, it results in a kind of tunnel vision that potentially omits entire communities. 
 
 In the case of the BIFF (as shown in Figure 1), the overwhelming majority of BIPOC-themed films shown at this festival were produced in the US. This would indicate that BIPOC experiences, at least in the films included in this study, are primarily framed through the Western lens that Estrella and Dovey refer to. 
 
@@ -57,7 +59,9 @@ International_Figures <- Beaufort_Festival %>%
 
 International_Figures
 ```
-Among those films produced in the US, California and New York lead the way (see Figures 2 & 3), with the former alone being responsible for over twenty BIPOC-themed works This is not unexpected, as both states are home to incredibly diverse populations. However, it does indicate some geographical limitation as to how this festival's audiences have engaged with BIPOC themes. There are few international films (a noteworthy observation for a festival whose name includes the word "international"), and in the US, two states are doing most of the heavy lifting with regards to BIPOC themes/stories. BIPOC communities from under-represented parts of the country and world remain largely overlooked.
+Among those films produced in the US, California and New York lead the way (see Figures 2 & 3), with the former alone being responsible for over twenty BIPOC-themed works This is not unexpected, as both states are home to incredibly diverse populations. However, it does indicate some geographical limitation as to how this festival's audiences have engaged with BIPOC themes. 
+
+There are few international films (a noteworthy observation for a festival whose name includes the word "international"), and in the US, two states are doing most of the heavy lifting with regards to BIPOC themes/stories. BIPOC communities from under-represented parts of the country and world remain largely overlooked.
 
 **Figure 2**
 ```{r}
@@ -77,7 +81,7 @@ usa <- map_data("state")
 
 library(leaflet)
 
-leaflet(data=BIFF_US_Coordinates) %>% addTiles() %>% addMarkers(~long, ~lat, popup = paste(BIFF_US_Coordinates$FILM, ", ", BIFF_US_Coordinates$YEAR, sep="")) 
+leaflet(data=BIFF_US_Coordinates) %>% addTiles() %>% addMarkers(~long, ~lat, popup = paste(BIFF_US_Coordinates$FILM, ", ", BIFF_US_Coordinates$YEAR, sep=""))
 ```
 **Figure 3**
 ```{r}
@@ -88,11 +92,11 @@ BeaufortIFF_by_State <- Beaufort_Geocoding %>%
 
 ggplot(BeaufortIFF_by_State, aes(x = STATE, y = COUNT, fill = STATE)) + geom_col() + ggtitle("BIPOC Films Submitted Per State, 2017-2022") + labs(x="States",y="Number of Films") 
 ```
-Equally as important as geogrphic diversity is the question of how many BIPOC-themed works were selected by the BIFF during this period *in general*. This is perhaps the most significant observation yielded by this study. One notes (Figure 4) that there is a steep decline in the number of BIPOC films beginning in 2020, which was, of course, the year of the president election. 
+Equally as important as geogrphic diversity is the question of how many BIPOC-themed works were selected by the BIFF during this period *in general*. This is perhaps the most significant observation yielded by this study. One notes (Figure 4) that there is a steep decline in the number of BIPOC films beginning in 2020, which was, of course, the year of the presidential election. 
 
-I would be interested in exploring the possible correlation between the intense anti-immigrant and racist rhetoric of the time, a trademark tactic during Donald Trump's campaigns and his presidency, and the number of BIPOC films shown. Once again, festivals as public spheres are contextually driven; and the BIFF is based in a conservative-leaning state. Cindy Wong puts it best in *Film Festivals: Culture, People, and Power on the Global Screen* when she states that festivals are "*open and closed* [my emphasis], allowing access to different groups of people, valuing certain voices over others, and juxtaposing different texts and agendas of interpretation."^[5] 
+I would be interested in exploring the possible correlation between the intense anti-immigrant and racist rhetoric of the time, a trademark tactic during Donald Trump's campaigns and his presidency, and the number of BIPOC films shown. Once again, festivals as public spheres are contextually driven; and the BIFF is based in a conservative-leaning state. Cindy Wong (2011) puts it best in *Film Festivals: Culture, People, and Power on the Global Screen* when she states that festivals are "*open and closed* [my emphasis], allowing access to different groups of people, valuing certain voices over others, and juxtaposing different texts and agendas of interpretation."^[5] 
 
-Inevitably, there are films that *aren't* selected; and in these especially volatile times, it's not a stretch to assert that political climate may influence these selection processes.  
+Inevitably, there are films that *aren't* selected; and in these especially volatile times, it's not a stretch to assert that political climate may influence these selection processes. Once again, we are talking about human beings who are ultimately tasked with doing the selecting.  
 **Figure 4**
 ```{r}
 BeaufordIFF_by_Year <- Beaufort_Geocoding %>%
@@ -101,7 +105,7 @@ BeaufordIFF_by_Year <- Beaufort_Geocoding %>%
 
 ggplot(BeaufordIFF_by_Year, aes(x=YEAR, y=COUNT)) + geom_line() + ggtitle("Total BIPOC Films Admitted Per Year") + labs(x="Year",y="Number of Films")
 ```
-We do a disservice to BIPOC communities, though, if we don't also scrutinize *how* their experiences are rendered in film. Do these films depict only one aspect of what it means to be BIPOC, or do they offer more complex stories that recognize the rich complexity of these communities? 
+We do a disservice to BIPOC communities, though, if we don't also scrutinize *how* their experiences are rendered in film. Do these films depict only one aspect of what it means to be BIPOC, or do they offer more nuanced stories that recognize the rich complexity of these communities? 
 
 As seen in Figure 5, BIPOC films submitted to the BIFF examine BIPOC experiences through *numerous* demographics, some of them international. Among the most prominent terms in the corpus of texts (i.e., the synopses) are "Laos," "Chinese," and "world." This would certainly bolster my theory that politically motivated rhetoric may have played a role in film selection, as one of Trump's campaign promises has always been to stymie the flow of immigration into America (a promise his campaign repeatedly attempted to normalize with "Build the wall" chants during his rallies). 
  
@@ -138,7 +142,7 @@ BIFF_top_terms %>%
   facet_wrap(~ topic, scales = "free") +
   scale_y_reordered()
 ```
-To double-check these findings, the top terms that appear throughout the entire dataset, not just for select topics, were tallied (Figure 6). They confirm the multicultural nature of the BIPOC films in this study, with "Chinese," "city" (urban areas are typically diverse in population), "world," "black," and "journey" (alluding to the immigrant experience) appearing frequently. 
+To double-check these findings, the top terms that appear throughout the entire dataset, not just for select topics, were tallied (Figure 6). They confirm the multicultural nature of the BIPOC films in this study, with "Chinese," "city" (urban areas are typically diverse in population), "world," "black," and "journey" (a term that certainly applies to the immigrant experience) appearing frequently. 
 
 **Figure 6**
 ```{r}
@@ -147,9 +151,9 @@ BeaufortIFF_words %>%
   summarize(COUNT = n()) %>%
   arrange(desc(COUNT))
 ```
-Upon completing a distanced reading of these BIPOC films and their subjects, we narrow our focus to 2020, the first year in the decline of BIPOC films shown at the BIFF. After identifying topic 4 as being most relevant to BIPOC films that year (Figure 7), a wordcloud was generated to map more relevant terms (Figure 8). The results include the words "refugee" and "racist." 
+Upon completing a distanced reading of these BIPOC films and their subjects, we narrow our focus to 2020, the first year in the decline of BIPOC films shown at the BIFF. After identifying topic 4 as most relevant to BIPOC films that year (Figure 7), a wordcloud was generated to map more relevant terms (Figure 8). Two words that appeared in multiple iterations of the wordcloud include "refugee" and "racist." 
 
-These are significant, as Donald Trump announced his campaign for re-election in June 2019, six months before the film line-up for the 2020 BIFF was announced. Impelled by early poll numbers that showed him trailing Joe Biden^[6], Trump leaned heavily on white nationalist rhetoric to try and rally his base, going so far as labeling foreigners "killers"^[7]. Another common strategy of his was (and still is) to portray the aforementioned subjects ("refugee," "racist") as manipulative tactics of the "woke." It is interesting to, say the least, that only a few films at the 2020 BIFF directly engage with refugee and racial subjects. 
+These are significant, as Donald Trump formally announced his campaign for re-election in June 2019, six months before the film line-up for the 2020 BIFF was announced. Impelled by early poll numbers that showed him trailing Joe Biden^[6], Trump leaned heavily on white nationalist rhetoric to try and rally his base, going so far as labeling foreigners "killers"^[7]. Another common strategy of his was (and still is) to portray the aforementioned subjects ("refugee," "racist") as manipulative tactics of the "woke." It is interesting to, say the least, that only a few films at the 2020 BIFF directly engage with refugee and racial subjects. 
 
 **Figure 7**
 ```{r}
@@ -165,7 +169,7 @@ BIFF_wordcloud <- BIFF_topic_list %>% filter(topic == 4)
 wordcloud(BIFF_topic_list$term, max.words = 45, random.order = FALSE,
     rot.per = 0.3, colors = brewer.pal(4, "Dark2"), scale = c(2, .5))
 ```
-Finally, it must be acknowledged, as Aida Vallejo states, that recognition through awards is "the first and most obvious strategy by which film festivals have influenced canon formation."^[8] These awards go a long way towards determining which films--and, by extension, their stories and themes--will have prolonged lives, thus extending the conversations they encourage, and which are more likely to be consigned to obscurity. This is especially true given that award-winners are far more likely to receive distribution offers from larger studios.  
+Finally, it must be acknowledged, as Aida Vallejo (2020) states, that recognition through awards is "the first and most obvious strategy by which film festivals have influenced canon formation."^[8] These awards go a long way towards determining which films--and, by extension, their stories and themes--will have prolonged lives, thus extending the conversations they encourage, and which are more likely to be consigned to obscurity. This is especially true given that award-winners are far more likely to receive attention and distribution offers from larger studios.  
 
 As seen in Figure 9, during the six years charted in this study, films that do *not* have BIPOC themes ("Null") have won three times as many awards as those that do. While these results are not wholly discouraging, they nevertheless hint at a disparity regarding which films are deemed worthy of acclaim and which are not, a disparity that has become a greater part of critical discourse as a result of the #OscarsSoWhite controversy.  
 
@@ -182,13 +186,15 @@ ggplot(BIFF_Award_Winners, aes(x = THEMES, y = COUNT, fill = THEMES)) + geom_col
 
 **CONCLUSION**
 
-The selections made by film festivals are inextricably tied to time, place, and socio-political climate. The Beaufort International Film Festival is no exception. Since 2017, the US has experienced unprecedented political division, which has included the mainstreaming of dangerous rhetoric aimed at other nations and the most vulnerable in our own society. 
+The selections made by film festivals are inextricably tied to time, place, and socio-political environment The Beaufort International Film Festival is no exception. Since 2017, the US has experienced unprecedented political division, which has included the mainstreaming of dangerous rhetoric aimed at other nations and the most vulnerable in our own society. 
 
 This uniquely hostile climate inevitably affects how we engage with stories that challenge us to see the world through eyes other than our own. In a state such as SC, these effects are acutely felt. 
 
-However, I would caution the reader against drawing firm conclusions from this study, as it possesses a number of limitations. First, the limited number of BIPOC films during the six-period of this study may *not* be the result of the BIFF's selection process. It is possible and reasonable that filmmakers, too intimidated by the current socio-political climate, simply chose not to make BIPOC-themed films. A festival can only make selections based on the works that are submitted.  
+However, I would caution the reader against drawing firm conclusions from this study, as it possesses a number of limitations. First, the limited number of BIPOC films during the six-period of this study may *not* be the result of the BIFF's selection process. It is possible and reasonable that filmmakers, too intimidated by the current socio-political climate, simply chose not to make BIPOC-themed films or were more selective about which states they chose to show their work in. A festival can only make selections from among works that are actually submitted, after all.  
 
-Second, the existence of film festivals structured around specific themes (BIPOC, LGBTQ, and feminist, to name just a few) may have limited the number of BIPOC-themed works submitted to the BIFF. Festivals typically include submission fees, and independent filmmakers, who often work on shoestring budgets, must carefully choose where they will enter their works for competition. 
+Second, the existence of film festivals structured around specific themes (BIPOC, LGBTQ, and feminist, to name just a few) may have limited the number of BIPOC-themed works submitted to the BIFF. Festivals typically include submission fees, and independent filmmakers, who often work on shoestring budgets, must carefully choose where they will enter their works for competition. It stands to reason that they would choose festivals that are most receptive of their work. 
+
+We also cannot ignore the fact that COVID-19 decimated movie industries, especially those that don't have the resources to survive like Hollywood does. The possible connection between the lingering effects of the pandemic and film festivals is a subject worthy of further study. At present, I've been unable to locate research that closely examines how this global health crisis specifically affected BIPOC films and filmmaking. 
 
 Finally, the limited scope of this study means that the results are hardly generalizable. What I have attempted to offer is a mere glimpse at how film festivals operate contextually, which directly determines which subjects audiences engage with and which are minimized or ignored. 
 
